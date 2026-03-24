@@ -1,5 +1,14 @@
 import * as orgService from '../services/org.service.js';
 
+export const getOrganizations = async (req, res) => {
+  try {
+    const organizations = await orgService.getOrganizations();
+    res.json(organizations);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 export const sponsor = async (req, res) => {
   try {
     const result = await orgService.sponsorUser(

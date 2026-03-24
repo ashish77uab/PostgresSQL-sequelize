@@ -3,6 +3,12 @@ import { getActiveSession } from './session.service.js';
 
 const SPONSOR_AMOUNT = 100;
 
+export const getOrganizations = async () => {
+  return db.Organization.findAll({
+    order: [['name', 'ASC']]
+  });
+};
+
 export const sponsorUser = async (orgId, userId, sessionId) => {
   const organization = await db.Organization.findByPk(orgId);
   if (!organization) {
